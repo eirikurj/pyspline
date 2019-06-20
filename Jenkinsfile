@@ -3,8 +3,15 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'python --version'
+                echo $MDOLAB_REPO_DIR
+                cd $MDOLAB_REPO_DIR
             }
         }
+        stage('test') {
+            steps {
+                echo $MDOLAB_REPO_DIR
+                cd $MDOLAB_REPO_DIR
+            }
+        }        
     }
 }
