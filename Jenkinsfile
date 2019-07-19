@@ -6,6 +6,7 @@ pipeline {
                 sh 'echo $MDOLAB_REPO_DIR'
                 sh 'cd $MDOLAB_REPO_DIR'
                 sh 'pwd'
+                sh 'ls -la'
             }
         }
         stage('test') {
