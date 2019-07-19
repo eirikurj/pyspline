@@ -5,8 +5,8 @@ pipeline {
             steps {
                 sh 'echo $MDOLAB_REPO_DIR'
                 sh 'cd $MDOLAB_REPO_DIR'
-                sh 'pwd'
-                sh 'ls -la'
+                sh 'cp config/defaults/config.LINUX_INTEL.mk config/config.mk'
+                sh 'make'
             }
         }
         stage('test') {
