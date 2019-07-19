@@ -3,14 +3,14 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                echo $MDOLAB_REPO_DIR
-                cd $MDOLAB_REPO_DIR
+                sh 'echo $MDOLAB_REPO_DIR'
+                sh 'cd $MDOLAB_REPO_DIR'
             }
         }
         stage('test') {
             steps {
-                echo $MDOLAB_REPO_DIR
-                cd $MDOLAB_REPO_DIR
+                sh 'echo $MDOLAB_REPO_DIR'
+                sh 'cd $MDOLAB_REPO_DIR'
             }
         }        
     }
