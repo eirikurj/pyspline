@@ -23,7 +23,7 @@ pipeline {
         }
         stage('test') {
             steps {
-                sh 'cd python/reg_tests; python run_reg_tests.py -nodiff'
+                sh 'PYTHONPATH=$JENKINS_HOME; cd python/reg_tests; python run_reg_tests.py -nodiff'
             }
         }        
     }
