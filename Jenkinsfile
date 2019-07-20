@@ -12,8 +12,8 @@ pipeline {
         }
         stage('test') {
             steps {
-                sh 'echo $MDOLAB_REPO_DIR'
-                sh 'cd $MDOLAB_REPO_DIR'
+                sh 'cd python/reg_tests'
+                sh 'python run_reg_tests.py -nodiff'
             }
         }        
     }
