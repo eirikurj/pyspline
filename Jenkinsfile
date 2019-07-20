@@ -6,7 +6,8 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'pwd'
-                sh 'node --version'
+                sh 'python --version'
+                sh 'pip list'
                 sh 'pwd'
             }
         }
