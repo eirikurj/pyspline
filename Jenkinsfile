@@ -7,6 +7,7 @@ pipeline {
                 sh 'cp config/defaults/config.LINUX_GFORTRAN.mk config/config.mk'
                 sh 'make'
                 sh 'pwd'
+                sh 'env'
             }
         }
         stage('test') {
