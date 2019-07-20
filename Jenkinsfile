@@ -17,6 +17,7 @@ pipeline {
                 sh 'cp config/defaults/config.LINUX_GFORTRAN.mk config/config.mk'
                 sh 'make'
                 sh 'pwd'
+                sh 'PYTHONPATH=$JENKINS_HOME'
                 sh 'env | sort'
             }
         }
