@@ -2,9 +2,6 @@ pipeline {
     agent any
 
 
-    environment {
-        PYTHONPATH = "$(pwd):$PYTHONPATH"
-    }
 
     stages {
         stage('clean_workspace_and_checkout_source') {
