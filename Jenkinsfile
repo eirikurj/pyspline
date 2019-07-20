@@ -8,6 +8,7 @@ pipeline {
             steps {
             deleteDir()
             checkout scm
+            sh 'env|sort'
             }
         }        
         stage('build') {
