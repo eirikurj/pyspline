@@ -3,7 +3,7 @@ pipeline {
 
 
     environment {
-        PYTHONPATH= $(pwd):$PYTHONPATH
+        PYTHONPATH = "$(pwd):$PYTHONPATH"
     }
 
     stages {
