@@ -5,7 +5,9 @@ pipeline {
     stages {
         stage('Test') {
             steps {
+                sh 'pwd'
                 sh 'node --version'
+                sh 'pwd'
             }
         }
     }
