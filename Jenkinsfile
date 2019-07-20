@@ -23,8 +23,9 @@ pipeline {
         }
         stage('test') {
             steps {
-                sh 'export PYTHONPATH=$JENKINS_HOME/workspace; cd python/reg_tests; python run_reg_tests.py -nodiff'
+                sh 'cd python/reg_tests; python run_reg_tests.py -nodiff'
             }
-        }        
+        }    
+            
     }
 }

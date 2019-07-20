@@ -13,7 +13,7 @@ import numpy
 # Extension modules
 # =============================================================================
 from mdo_regression_helper import *
-from .. import pySpline
+from pyspline import pySpline
 
 def eval_test(surface):
     '''Eval fixed points from the surface'''
