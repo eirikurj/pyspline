@@ -13,6 +13,7 @@ pipeline {
         stage('test') {
             steps {
                 sh 'cd python/reg_tests'
+                sh 'pwd'
                 sh 'python run_reg_tests.py -nodiff'
             }
         }        
