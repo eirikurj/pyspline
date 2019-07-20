@@ -4,6 +4,8 @@ pipeline {
         stage('build') {
             steps {
                 sh 'pwd'
+                sh 'python --version'
+                sh 'pip list'
                 sh 'echo $USER'
                 sh 'echo $MDOLAB_REPO_DIR'
                 sh 'cp config/defaults/config.LINUX_GFORTRAN.mk config/config.mk'
