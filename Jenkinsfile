@@ -17,13 +17,13 @@ pipeline {
                 sh 'cp config/defaults/config.LINUX_GFORTRAN.mk config/config.mk'
                 sh 'make'
                 sh 'pwd'
-                sh 'PYTHONPATH=$JENKINS_HOME'
+                sh 'PYTHONPATH=$JENKINS_HOME/workspace'
                 sh 'env | sort'
             }
         }
         stage('test') {
             steps {
-                sh 'export PYTHONPATH=$JENKINS_HOME; cd python/reg_tests; python run_reg_tests.py -nodiff'
+                sh 'export PYTHONPATH=$JENKINS_HOME/workspace; cd python/reg_tests; python run_reg_tests.py -nodiff'
             }
         }        
     }
