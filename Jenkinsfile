@@ -1,32 +1,19 @@
 pipeline {
     agent any
 
-
-
     stages {
-        stage('clean_workspace_and_checkout_source') {
+
+        stage('py2_real_build') {
             steps {
-            deleteDir()
-            checkout scm
-            sh 'env|sort'
-            }
-        }        
-        stage('build') {
-            steps {
-                sh 'cd $MDOLAB_REPO_DIR'
                 sh 'cp config/defaults/config.LINUX_GFORTRAN.mk config/config.mk'
-                sh 'make'
-                sh 'pwd'
-                sh 'export ASDF=asdf'
-                sh 'env | sort'
+                sh '. /home/mdolab/packages/setMdolabPath; conda activate py2; env|sort; make'
             }
         }
-        stage('test') {
+
+        stage('py2_real_test') {
             steps {
-                sh 'env|sort'
-                sh 'cd python/reg_tests; python run_reg_tests.py -nodiff'
+                sh '. /home/mdolab/packages/setMdolabPath; conda activate py2; env|sort; cd python/reg_tests; python run_reg_tests.py -nodiff'
             }
-        }    
-            
+        }            
     }
 }
