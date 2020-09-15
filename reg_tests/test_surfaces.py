@@ -1,4 +1,3 @@
-from __future__ import print_function
 # =============================================================================
 # Standard Python modules                                           
 # =============================================================================
@@ -193,4 +192,3 @@ if __name__ == '__main__':
                     run_surface_test(surface)
                     run_project_test(surface)
                     io_test(surface)
-

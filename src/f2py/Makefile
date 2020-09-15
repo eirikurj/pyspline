@@ -21,7 +21,7 @@ all:
 	 @echo "#------------------------------------------------------#"
 
 # Generate Numpy inlude directory
-	$(eval NUMPY_INCLUDES = $(shell $(PYTHON) -c 'from __future__ import print_function; import numpy; print(numpy.get_include())'))
+	$(eval NUMPY_INCLUDES = $(shell $(PYTHON) -c 'import numpy; print(numpy.get_include())'))
 	 @echo "#------------------------------------------------------#"
 	 @echo Numpy Include Directory: $(NUMPY_INCLUDES)
 	 @echo "#------------------------------------------------------#"
@@ -48,7 +48,7 @@ all:
 
 	$(FF90) $(SO_LINKER_FLAGS) $(PYTHON_OBJECTS) $(LINKER_ALL_FLAGS) -o libspline.so
 	$(PYTHON) importTest.py
-	mv libspline.so ../../python
+	mv libspline.so ../../pyspline
 
 # Clean up temporary files
 	-rm *.o

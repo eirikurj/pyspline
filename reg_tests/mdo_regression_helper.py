@@ -1,4 +1,3 @@
-from __future__ import print_function
 # This file contains two functions to help regression testing. The
 # first is used to format float values with a specified absolute and
 # relative tolerance. This information is used by the second function
@@ -147,4 +146,3 @@ if __name__ == '__main__':
     str2 = "@value    3.141592999999999 1e-12 1e-12"
 
     print('This comp should be False: ', _reg_str_comp(str1, str2))
-
