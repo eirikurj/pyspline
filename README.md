@@ -1,7 +1,6 @@
 pySpline
 ====================================================
-
-[![Build Status](https://travis-ci.com/mdolab/pyspline.svg?token=Kdy3JowvEtkKSPpqvdLj&branch=pySpline)](https://travis-ci.com/mdolab/pyspline)
+[![Build Status](https://dev.azure.com/mdolab/Public/_apis/build/status/mdolab.pyspline?branchName=master)](https://dev.azure.com/mdolab/Public/_build/latest?definitionId=20&branchName=master)
 [![Documentation Status](https://readthedocs.com/projects/mdolab-pyspline/badge/?version=latest)](https://mdolab-pyspline.readthedocs-hosted.com/en/latest/?badge=latest)
 
 ``pySpline`` is a package containing code for wiking with b-spline
@@ -13,7 +12,6 @@ Documentation
 -------------
 
 Please see the [documentation](https://mdolab-pyspline.readthedocs-hosted.com/en/latest/) for installation details and API documentation.
-This link requires credentials currently only available to MDO Lab members.
 
 To locally build the documentation, enter the `doc` folder and enter `make html` in terminal.
 You can then view the built documentation in the `_build` folder.
