@@ -1,20 +1,14 @@
-# =============================================================================
 # Standard Python modules
-# =============================================================================
 import os
-
-# =============================================================================
-# External Python modules
-# =============================================================================
-import numpy
-from numpy.testing import assert_allclose
 import unittest
 
-# =============================================================================
-# Extension modules
-# =============================================================================
-from pyspline import pySpline
+# External modules
 from baseclasses import BaseRegTest
+import numpy as np
+from numpy.testing import assert_allclose
+
+# First party modules
+from pyspline import Curve
 
 baseDir = os.path.dirname(os.path.abspath(__file__))
 
@@ -110,45 +104,45 @@ class Test(unittest.TestCase):
         # print('-----------  2D k=2 test ----------')
         k = 2
         t = [0, 0, 0.5, 1, 1]
-        coef = numpy.zeros((3, 2))
+        coef = np.zeros((3, 2))
         coef[0] = [0, 0.6]
         coef[1] = [1.1, 1.4]
         coef[2] = [2.6, 5.1]
-        curve = pySpline.Curve(t=t, k=k, coef=coef)
+        curve = Curve(t=t, k=k, coef=coef)
         run_curve_test(curve, handler, "2D k={}".format(k))
         io_test(curve)
 
         # print('-----------  2D k=3 test ----------')
         k = 3
         t = [0, 0, 0, 0.5, 1, 1, 1]
-        coef = numpy.zeros((4, 2))
+        coef = np.zeros((4, 2))
         coef[0] = [0, 0.45]
         coef[1] = [0.71, 1.5]
         coef[2] = [2.5, 5.9]
         coef[3] = [4, -2]
-        curve = pySpline.Curve(t=t, k=k, coef=coef)
+        curve = Curve(t=t, k=k, coef=coef)
         run_curve_test(curve, handler, "2D k={}".format(k))
         io_test(curve)
 
         # print('-----------  2D k=4 test ----------')
         k = 4
         t = [0, 0, 0, 0, 0.5, 1, 1, 1, 1]
-        coef = numpy.zeros((5, 2))
+        coef = np.zeros((5, 2))
         coef[0] = [0, -0.60]
         coef[1] = [0.9, 1.6]
         coef[2] = [1.6, 5.2]
         coef[3] = [4.2, -2.24]
         coef[4] = [2.9, 6.2]
-        curve = pySpline.Curve(t=t, k=k, coef=coef)
+        curve = Curve(t=t, k=k, coef=coef)
         run_curve_test(curve, handler, "2D k={}".format(k))
         io_test(curve)
 
         # Get helix data
         n = 100
-        theta = numpy.linspace(0.0, numpy.pi * 2, n)
-        x = numpy.cos(theta)
-        y = numpy.sin(theta)
-        z = numpy.linspace(0, 1, n)
+        theta = np.linspace(0.0, np.pi * 2, n)
+        x = np.cos(theta)
+        y = np.sin(theta)
+        z = np.linspace(0, 1, n)
 
         # print('+--------------------------------------+')
         # print('              LMS Tests   ')
@@ -156,7 +150,7 @@ class Test(unittest.TestCase):
         for k in [2, 3, 4]:
             test_name = "LMS test k={}".format(k)
             # print('--------- Test helix data with k=%d-------'%(k))
-            curve = pySpline.Curve(x=x, y=y, z=z, k=k, nCtl=16, niter=50)
+            curve = Curve(x=x, y=y, z=z, k=k, nCtl=16, niter=50)
             run_curve_test(curve, handler, test_name)
             run_project_test(curve, handler, test_name)
 
@@ -166,6 +160,6 @@ class Test(unittest.TestCase):
         for k in [2, 3, 4]:
             test_name = "interpolation test k={}".format(k)
             # print('--------- Test helix data with k=%d-------'%(k))
-            curve = pySpline.Curve(x=x, y=y, z=z, k=k)
+            curve = Curve(x=x, y=y, z=z, k=k)
             run_curve_test(curve, handler, test_name)
             run_project_test(curve, handler, test_name)

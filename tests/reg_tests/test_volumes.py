@@ -1,19 +1,13 @@
-# =============================================================================
 # Standard Python modules
-# =============================================================================
 import os
-
-# =============================================================================
-# External Python modules
-# =============================================================================
-import numpy
 import unittest
 
-# =============================================================================
-# Extension modules
-# =============================================================================
-from pyspline import pySpline
+# External modules
 from baseclasses import BaseRegTest
+import numpy as np
+
+# First party modules
+from pyspline import Volume
 
 baseDir = os.path.dirname(os.path.abspath(__file__))
 
@@ -93,7 +87,7 @@ class Test(unittest.TestCase):
     def regression_test(self, handler, solve=False):
 
         # Define raw data for a volume:
-        data = numpy.array(
+        data = np.array(
             [
                 -0.3820033967,
                 -0.317065736,
@@ -2177,7 +2171,7 @@ class Test(unittest.TestCase):
             ]
         )
 
-        X = numpy.zeros((9, 7, 11, 3))
+        X = np.zeros((9, 7, 11, 3))
         nval = 9 * 7 * 11
         X[:, :, :, 0] = data[0 * nval : 1 * nval].reshape((9, 7, 11), order="f")
         X[:, :, :, 1] = data[1 * nval : 2 * nval].reshape((9, 7, 11), order="f")
@@ -2193,9 +2187,7 @@ class Test(unittest.TestCase):
                                 test_name = "volume with ku={}, kv={}, kw={}, nCtlu={}, nCtlv={}, nCtlw={}".format(
                                     ku, kv, kw, nCtlu, nCtlv, nCtlw
                                 )
-                                volume = pySpline.Volume(
-                                    X=X, ku=ku, kv=kv, kw=kw, nCtlu=nCtlu, nCtlv=nCtlv, nCtlw=nCtlw
-                                )
+                                volume = Volume(X=X, ku=ku, kv=kv, kw=kw, nCtlu=nCtlu, nCtlv=nCtlv, nCtlw=nCtlw)
                                 volume.recompute()
                                 run_volume_test(volume, handler, test_name)
                                 run_project_test(volume, handler, test_name)

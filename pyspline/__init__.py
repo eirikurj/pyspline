@@ -1,6 +1,5 @@
-__version__ = "1.2.1"
+__version__ = "1.5.0"
 
-from . import pySpline
-from .pySpline import Curve
-from .pySpline import Surface
-from .pySpline import Volume
+from .pyCurve import Curve
+from .pySurface import Surface
+from .pyVolume import Volume

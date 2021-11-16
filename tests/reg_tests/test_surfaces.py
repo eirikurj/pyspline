@@ -1,20 +1,14 @@
-# =============================================================================
 # Standard Python modules
-# =============================================================================
 import os
-
-# =============================================================================
-# External Python modules
-# =============================================================================
-import numpy
-from numpy.testing import assert_allclose
 import unittest
 
-# =============================================================================
-# Extension modules
-# =============================================================================
-from pyspline import pySpline
+# External modules
 from baseclasses import BaseRegTest
+import numpy as np
+from numpy.testing import assert_allclose
+
+# First party modules
+from pyspline import Curve, Surface
 
 baseDir = os.path.dirname(os.path.abspath(__file__))
 
@@ -121,7 +115,7 @@ def run_project_test(surface, handler, test_name):
         y = [4, 3, 2, 1]
         z = [-3, 1, 3, 5]
 
-        curve = pySpline.Curve(k=kc, x=x, y=y, z=z)
+        curve = Curve(k=kc, x=x, y=y, z=z)
         u, v, s, D = surface.projectCurve(curve)
         # ---------- surface-curve projection with kc = kc
         handler.root_add_val("{} projected curve u with kc={}".format(test_name, kc), u, tol=eps)
@@ -163,10 +157,10 @@ class Test(unittest.TestCase):
         # Create a generic surface
         nu = 10
         nv = 10
-        u = numpy.linspace(0, 4, nu)
-        v = numpy.linspace(0, 4, nv)
-        [V, U] = numpy.meshgrid(v, u)
-        Z = numpy.cos(U) * numpy.sin(V)
+        u = np.linspace(0, 4, nu)
+        v = np.linspace(0, 4, nv)
+        [V, U] = np.meshgrid(v, u)
+        Z = np.cos(U) * np.sin(V)
 
         # Testing Surface with ku, kv, nCtlu, nCtlv
         for ku in [2, 3, 4]:
@@ -174,7 +168,7 @@ class Test(unittest.TestCase):
                 for nCtlu in [5, 10]:
                     for nCtlv in [5, 10]:
                         test_name = "surface with ku={}, kv={}, nCtlu={}, nCtlv={}".format(ku, kv, nCtlu, nCtlv)
-                        surface = pySpline.Surface(x=U, y=V, z=Z, ku=ku, kv=kv, nCtlu=nCtlu, nCtlv=nCtlv)
+                        surface = Surface(x=U, y=V, z=Z, ku=ku, kv=kv, nCtlu=nCtlu, nCtlv=nCtlv)
                         surface.recompute()
                         run_surface_test(surface, handler, test_name)
                         run_project_test(surface, handler, test_name)
